@@ -1,5 +1,6 @@
 const {createaccount,login,updateUser,cashDeposit,transfer,getAccount, transactionHistory} = require("../controller/usercontroller")
 const express = require("express")
+const serverless = require('serverless-http');
 const router = express.Router()
 const auth = require("../middleware/auth")
 
@@ -11,4 +12,4 @@ router.post("/transfer/:id",transfer)
 router.get("/getaccount/:id",getAccount)
 router.get("/transactionhistory/:id",transactionHistory)
 
-module.exports =router
+module.exports.handler = serverless(router);
